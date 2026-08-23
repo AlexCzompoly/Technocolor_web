@@ -61,14 +61,17 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 /* ===================== NAV ===================== */
 .nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .2s,background .2s,box-shadow .2s}
 .nav.stuck{border-color:var(--line);background:rgba(255,255,255,.92);box-shadow:0 8px 24px -18px rgba(11,37,64,.5)}
-.nav-in{display:flex;align-items:center;gap:26px;height:72px;max-width:var(--wrap);margin:0 auto;padding:0 20px}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.03em;text-decoration:none}
-.logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#1e78dd,#0b2540);display:grid;place-items:center;color:#fff;font-family:var(--mono);font-size:12.5px;font-weight:700}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:26px;height:72px;max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-img{height:28px;width:auto;display:block}
 .nav-links{display:flex;gap:26px;margin:0 auto}
 .nav-links a{font-size:14.5px;font-weight:500;color:var(--muted);text-decoration:none;position:relative;transition:color .15s}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--blue);border-radius:2px;transition:right .22s}
 .nav-links a:hover{color:var(--blue)}
 .nav-links a:hover::after{right:0}
+.nav-links a.nav-highlight{font-weight:800;color:var(--navy-800)}
+.nav-links a.nav-highlight:hover{color:var(--blue)}
+.nav-links-cta{display:none}
 .nav-cta{display:flex;gap:10px;align-items:center}
 .nav-cta .btn{padding:10px 22px;font-size:14px}
 .burger{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
@@ -77,7 +80,11 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 
 /* ===================== HERO ===================== */
 .hero{position:relative;min-height:560px;display:flex;align-items:center;padding:110px 0 150px;color:#fff;overflow:hidden;background:#0b2540}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(150deg,#17456f 0%,#0b2540 55%,#061525 100%)}
+.hero-bg{position:absolute;inset:0;background:#0b2540 url("Images/pexels-whidegroup-26583385.jpg") center 32%/cover no-repeat}
+.hero-bg::before{content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(105deg,rgba(11,37,64,.95) 0%,rgba(11,37,64,.86) 38%,rgba(6,21,37,.58) 72%,rgba(6,21,37,.46) 100%),
+    linear-gradient(180deg,rgba(6,21,37,.42) 0%,rgba(6,21,37,.30) 45%,rgba(6,21,37,.88) 100%)}
 .hero-bg::after{content:"";position:absolute;inset:0;opacity:.4;
   background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px),radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:7px 7px,11px 11px;background-position:0 0,4px 5px;
@@ -93,13 +100,14 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 /* ===================== KONTAKTNÝ PRUH ===================== */
 .contact-bar{position:relative;z-index:5;margin-top:-64px}
 .contact-bar-in{display:grid;grid-template-columns:repeat(3,1fr);background:linear-gradient(120deg,#2a8cf0,#1558b0);border-radius:var(--r-md);box-shadow:0 26px 50px -22px rgba(11,37,64,.55);overflow:hidden}
-.cb{display:flex;gap:14px;padding:26px 30px;color:#fff;text-decoration:none;transition:background .18s}
+.cb{display:flex;align-items:center;gap:16px;padding:28px 30px;color:#fff;text-decoration:none;transition:background .18s}
 .cb+.cb{border-left:1px solid rgba(255,255,255,.18)}
 .cb:hover{background:rgba(255,255,255,.09)}
-.cb .ico{width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none}
-.cb .ico svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.cb small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:4px}
-.cb b{font-size:15.5px;font-weight:600;line-height:1.35}
+.cb .ico{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none}
+.cb .ico svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cb .ico+span{min-width:0;flex:1}
+.cb small{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:5px}
+.cb b{display:block;font-size:18px;font-weight:700;line-height:1.32;overflow-wrap:anywhere}
 
 /* ===================== O NÁS ===================== */
 .about{display:grid;grid-template-columns:1.1fr .9fr;align-items:center}
@@ -131,7 +139,9 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .visual{position:relative;height:340px;border-radius:22px;background:linear-gradient(150deg,#1a4a7d 0%,#0b2540 60%,#071a30 100%);overflow:hidden;box-shadow:var(--shadow-md)}
 .visual::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,138,221,.35),transparent 70%);top:-90px;left:-60px}
 .visual .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.28);font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}
-.visual .tag{position:absolute;bottom:18px;left:18px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#eaf2ff;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
+.visual .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.visual .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,37,0) 42%,rgba(6,21,37,.62) 100%)}
+.visual .tag{position:absolute;z-index:2;bottom:18px;left:18px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#eaf2ff;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
 .service .content{padding:30px 54px}
 .service.reverse .content{padding:30px 0 30px 54px}
 .service:not(.reverse) .content{padding:30px 54px 30px 0}
@@ -198,6 +208,7 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 0;margin-top:0}
 .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;padding-bottom:46px}
 .ft .logo{color:#fff;margin-bottom:14px}
+.ft .logo-img{height:34px}
 .ft .tagline{font-size:14px;line-height:1.7;max-width:300px}
 .ft h5{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#7fa8d8;margin-bottom:16px}
 .ft ul{list-style:none;display:grid;gap:9px}
@@ -220,7 +231,11 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
   .nav-links{display:none}
   .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);margin:0}
   .burger{display:block}
-  .nav-cta .btn-outline{display:none}
+  .nav-cta .btn-outline,.nav-cta .btn-primary{display:none}
+  .nav-links-cta{display:flex;gap:10px;margin-top:6px;padding-top:16px;border-top:1px solid var(--line)}
+  .nav-links-cta .btn{flex:1;justify-content:center}
+  .nav-links-cta .btn-primary{color:#fff}
+  .nav-links-cta .btn-outline{color:var(--navy-800)}
   .hero{padding:88px 0 130px;min-height:0}
   .contact-bar-in{grid-template-columns:1fr}
   .cb+.cb{border-left:none;border-top:1px solid rgba(255,255,255,.18)}
@@ -235,14 +250,21 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
   .expand-in{padding:26px 22px 28px}
   .detail-grid{gap:22px}
   .contact{grid-template-columns:1fr;gap:36px}
+  #kontakt .wrap{padding-left:14px;padding-right:32px}
   .map{height:340px}
   .pad{padding:70px 0}
 }
 @media (max-width:560px){
   .proj-grid{grid-template-columns:1fr 1fr}
-  .stats{flex-wrap:wrap;gap:18px 0}
-  .stat{flex:0 0 50%;padding-right:12px}
-  .stat+.stat{border-left:none;padding-left:0}
+  .stats{flex-wrap:nowrap;gap:0}
+  .stat{flex:1;padding-right:10px}
+  .stat+.stat{padding-left:10px}
+  .stat .num{font-size:20px}
+  .stat .label{font-size:9px;letter-spacing:.03em}
+  .cb{gap:10px;padding:24px 20px}
+  .cb .ico{width:36px;height:36px}
+  .cb .ico svg{width:17px;height:17px}
+  .cb b{font-size:16px}
   .ft-grid{grid-template-columns:1fr;gap:32px}
 }
 </style>
@@ -252,14 +274,18 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
 <!-- ===================== NAV ===================== -->
 <nav class="nav" id="nav">
   <div class="nav-in">
-    <a class="logo" href="#top"><span class="logo-mark">TC</span>technocolor</a>
+    <a class="logo" href="#top"><img class="logo-img" src="Images/Logo.png" alt="Technocolor"></a>
     <div class="nav-links" id="navLinks">
       <a href="#top">Domov</a>
       <a href="#tryskanie">Tryskanie</a>
       <a href="#lakovanie">Lakovanie</a>
       <a href="#znacenie">Značenie</a>
       <a href="#certifikaty">Certifikáty</a>
-      <a href="#projekty">Projekty</a>
+      <a href="projekty.html" class="nav-highlight">Projekty</a>
+      <div class="nav-links-cta">
+        <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
+        <a class="btn btn-primary" href="tel:+421949643289">Telefón</a>
+      </div>
     </div>
     <div class="nav-cta">
       <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
@@ -272,7 +298,6 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
 <!-- ===================== HERO ===================== -->
 <header class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-photo">Fotka tímu — pozadie</div>
   <div class="hero-glow"></div>
   <div class="hero-in">
     <span class="eyebrow">Povrchová úprava a lakovanie</span>
@@ -335,7 +360,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
 
     <div class="service-block rv" id="tryskanie">
       <article class="service">
-        <div class="visual"><span class="ph">Fotka — tryskanie</span><span class="tag">Tryskanie / pieskovanie</span></div>
+        <div class="visual"><img class="shot" src="Images/old_tryskanie.jpg" alt="Tryskanie kovového obežného kolesa v tryskacej kabíne" loading="lazy" decoding="async"><span class="scrim"></span><span class="tag">Tryskanie / pieskovanie</span></div>
         <div class="content">
           <span class="num">01</span>
           <h3>Tryskanie / Pieskovanie</h3>
@@ -394,7 +419,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
 
     <div class="service-block rv" id="lakovanie">
       <article class="service reverse">
-        <div class="visual"><span class="ph">Fotka — lakovanie</span><span class="tag">Lakovanie</span></div>
+        <div class="visual"><img class="shot" src="Images/old_lakovanie.jpg" alt="Striekanie ochranného náteru na oceľovú konštrukciu" loading="lazy" decoding="async"><span class="scrim"></span><span class="tag">Lakovanie</span></div>
         <div class="content">
           <span class="num">02</span>
           <h3>Lakovanie</h3>
@@ -454,7 +479,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
 
     <div class="service-block rv" id="znacenie">
       <article class="service">
-        <div class="visual"><span class="ph">Fotka — dopravné značenie</span><span class="tag">Vodorovné dopravné značenie</span></div>
+        <div class="visual"><img class="shot" src="Images/Cestne_znacenia-beta.jpg" alt="Realizácia vodorovného dopravného značenia na asfaltovej ploche" loading="lazy" decoding="async"><span class="scrim"></span><span class="tag">Vodorovné dopravné značenie</span></div>
         <div class="content">
           <span class="num">03</span>
           <h3>Vodorovné dopravné značenie</h3>
@@ -529,7 +554,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <div class="proj">Fotka projektu</div>
       <div class="proj">Fotka projektu</div>
     </div>
-    <div class="center rv"><a class="btn btn-primary" href="#">Prezrieť projekty →</a></div>
+    <div class="center rv"><a class="btn btn-primary" href="projekty.html">Prezrieť projekty →</a></div>
   </div>
 </section>
 
@@ -594,7 +619,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
   <div class="wrap">
     <div class="ft-grid">
       <div>
-        <a class="logo" href="#top"><span class="logo-mark">TC</span>technocolor</a>
+        <a class="logo" href="#top"><img class="logo-img" src="Images/Logo.png" alt="Technocolor"></a>
         <p class="tagline">Povrchová úprava a lakovanie</p>
       </div>
       <div>
