@@ -678,6 +678,8 @@ function closePanel(panel){
 
 function openPanelFn(panel){
   panel.classList.add('open');
+  panel.style.height = '0px';
+  void panel.offsetHeight;                     // vynúti prekreslenie, nech animácia vždy nabehne
   panel.style.height = panel.scrollHeight + 'px';
   const btn = document.querySelector('.link[data-toggle="'+panel.id+'"]');
   if(btn){
