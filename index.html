@@ -145,7 +145,6 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .service .content{padding:30px 54px}
 .service.reverse .content{padding:30px 0 30px 54px}
 .service:not(.reverse) .content{padding:30px 54px 30px 0}
-.service .num{display:block;font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--muted-2);letter-spacing:.12em;margin-bottom:12px}
 .service .content p{font-size:15.5px;line-height:1.75;color:var(--muted);margin-bottom:12px;max-width:440px}
 .link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:14.5px;font-weight:700;color:var(--blue);text-decoration:none;transition:gap .16s}
 .link:hover{gap:11px}
@@ -362,7 +361,6 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <article class="service">
         <div class="visual"><img class="shot" src="Images/old_tryskanie.jpg" alt="Tryskanie kovového obežného kolesa v tryskacej kabíne" loading="lazy" decoding="async"><span class="scrim"></span><span class="tag">Tryskanie / pieskovanie</span></div>
         <div class="content">
-          <span class="num">01</span>
           <h3>Tryskanie / Pieskovanie</h3>
           <p>Tryskanie je mechanická úprava povrchu, ktorou dôkladne očistíme a zdrsníme materiál pred ďalším spracovaním — bez zmeny jeho tvaru.</p>
           <p>Využíva sa na odstránenie korózie, starých náterov, okují po tepelnom spracovaní aj ostrých hrán po obrábaní, a pripraví povrch pre kvalitnú priľnavosť náterov.</p>
@@ -421,7 +419,6 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <article class="service reverse">
         <div class="visual"><img class="shot" src="Images/old_lakovanie.jpg" alt="Striekanie ochranného náteru na oceľovú konštrukciu" loading="lazy" decoding="async"><span class="scrim"></span><span class="tag">Lakovanie</span></div>
         <div class="content">
-          <span class="num">02</span>
           <h3>Lakovanie</h3>
           <p>Lakovanie zabezpečuje viac než len estetiku — správne vyhotovený náter plní antikoróznu, vodoodpudivú, UV ochrannú aj protipožiarnu funkciu.</p>
           <p>Používame základné farby s antikoróznymi pigmentmi aj širokú škálu vrchných náterov (epoxidové, syntetické, akrylátové, polyuretánové) podľa požiadaviek na odolnosť a použitie, a nanášame ich vysokotlakovou (Airless) aj nízkotlakovou technológiou.</p>
@@ -481,7 +478,6 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <article class="service">
         <div class="visual"><img class="shot" src="Images/Cestne_znacenia-beta.jpg" alt="Realizácia vodorovného dopravného značenia na asfaltovej ploche" loading="lazy" decoding="async"><span class="scrim"></span><span class="tag">Vodorovné dopravné značenie</span></div>
         <div class="content">
-          <span class="num">03</span>
           <h3>Vodorovné dopravné značenie</h3>
           <p>Realizujeme vodorovné značenie na parkoviskách, v priemyselných areáloch, halách aj na komunikáciách — od vyznačenia parkovacích státí po kompletné dopravné riešenie plochy.</p>
           <p>Značenie nanášame v predpísanej hrúbke a rozmeroch, s dôrazom na dlhú životnosť a čitateľnosť aj za zníženej viditeľnosti.</p>
@@ -651,7 +647,28 @@ burger.addEventListener('click', () => {
   const open = links.classList.toggle('open');
   burger.setAttribute('aria-expanded', open);
 });
-links.addEventListener('click', e => { if (e.target.tagName === 'A') links.classList.remove('open'); });
+links.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  const menuWasOpen = links.classList.contains('open');
+  links.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  // Ak menu bolo otvorené (mobil), zavretie prekreslí stránku a prehliadač
+  // by mohol zrušiť skok na kotvu spustený tým istým klikom — doskrolujeme sami.
+  if (menuWasOpen && href.charAt(0) === '#' && href.length > 1) {
+    const target = document.getElementById(href.slice(1));
+    if (target) {
+      e.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      requestAnimationFrame(() => {
+        const y = target.getBoundingClientRect().top + window.scrollY - 86;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+        history.pushState(null, '', href);
+      });
+    }
+  }
+});
 
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const io = new IntersectionObserver(entries => {

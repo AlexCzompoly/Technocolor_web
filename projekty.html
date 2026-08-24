@@ -69,10 +69,8 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--blue);border-radius:2px;transition:right .22s}
 .nav-links a:hover{color:var(--blue)}
 .nav-links a:hover::after{right:0}
-.nav-links a.active{color:var(--blue)}
-.nav-links a.active::after{right:0}
 .nav-links a.nav-highlight{font-weight:800;color:var(--navy-800)}
-.nav-links a.nav-highlight.active,.nav-links a.nav-highlight:hover{color:var(--blue)}
+.nav-links a.nav-highlight:hover{color:var(--blue)}
 .nav-links-cta{display:none}
 .nav-cta{display:flex;gap:10px;align-items:center}
 .nav-cta .btn{padding:10px 22px;font-size:14px}
@@ -163,7 +161,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <a href="index.html#lakovanie">Lakovanie</a>
       <a href="index.html#znacenie">Značenie</a>
       <a href="index.html#certifikaty">Certifikáty</a>
-      <a href="projekty.html" class="nav-highlight active" aria-current="page">Projekty</a>
+      <a href="projekty.html" class="nav-highlight" aria-current="page">Projekty</a>
       <div class="nav-links-cta">
         <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
         <a class="btn btn-primary" href="tel:+421949643289">Telefón</a>
@@ -307,7 +305,28 @@ burger.addEventListener('click', () => {
   const open = links.classList.toggle('open');
   burger.setAttribute('aria-expanded', open);
 });
-links.addEventListener('click', e => { if (e.target.tagName === 'A') links.classList.remove('open'); });
+links.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  const menuWasOpen = links.classList.contains('open');
+  links.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  // Ak menu bolo otvorené (mobil), zavretie prekreslí stránku a prehliadač
+  // by mohol zrušiť skok na kotvu spustený tým istým klikom — doskrolujeme sami.
+  if (menuWasOpen && href.charAt(0) === '#' && href.length > 1) {
+    const target = document.getElementById(href.slice(1));
+    if (target) {
+      e.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      requestAnimationFrame(() => {
+        const y = target.getBoundingClientRect().top + window.scrollY - 86;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+        history.pushState(null, '', href);
+      });
+    }
+  }
+});
 
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const io = new IntersectionObserver(entries => {
