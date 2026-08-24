@@ -647,28 +647,7 @@ burger.addEventListener('click', () => {
   const open = links.classList.toggle('open');
   burger.setAttribute('aria-expanded', open);
 });
-links.addEventListener('click', e => {
-  const a = e.target.closest('a');
-  if (!a) return;
-  const href = a.getAttribute('href') || '';
-  const menuWasOpen = links.classList.contains('open');
-  links.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-  // Ak menu bolo otvorené (mobil), zavretie prekreslí stránku a prehliadač
-  // by mohol zrušiť skok na kotvu spustený tým istým klikom — doskrolujeme sami.
-  if (menuWasOpen && href.charAt(0) === '#' && href.length > 1) {
-    const target = document.getElementById(href.slice(1));
-    if (target) {
-      e.preventDefault();
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      requestAnimationFrame(() => {
-        const y = target.getBoundingClientRect().top + window.scrollY - 86;
-        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
-        history.pushState(null, '', href);
-      });
-    }
-  }
-});
+links.addEventListener('click', e => { if (e.target.tagName === 'A') links.classList.remove('open'); });
 
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const io = new IntersectionObserver(entries => {
