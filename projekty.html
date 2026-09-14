@@ -94,7 +94,7 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 
 /* ===================== KATEGÓRIE PROJEKTOV ===================== */
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.cat-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.cat-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 .cat-card:hover{transform:translateY(-4px);box-shadow:0 26px 46px -22px rgba(11,37,64,.35)}
 .cat-photo{position:relative;height:190px;background:linear-gradient(150deg,#1a4a7d 0%,#0b2540 60%,#071a30 100%);overflow:hidden;flex:none}
 .cat-photo::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(56,138,221,.32),transparent 70%);top:-70px;left:-50px}
@@ -108,6 +108,7 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .cat-link{display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:700;color:var(--blue);text-decoration:none;transition:gap .16s}
 .cat-link:hover{gap:11px}
 .cat-link .arw{display:inline-block}
+.cat-link::after{content:"";position:absolute;inset:0;z-index:2}
 
 /* ===================== FOOTER ===================== */
 footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 0;margin-top:0}
@@ -197,7 +198,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
         <div class="cat-body">
           <h3>Autolakárenstvo</h3>
           <p>Opravy karosérií, prelakovanie dielov a obnova laku podľa vzorkovníka RAL — pre autoservisy aj súkromných zákazníkov.</p>
-          <a class="cat-link" href="#">Zobraziť projekty <span class="arw">→</span></a>
+          <a class="cat-link" href="projekty-autolakarenstvo.html">Zobraziť projekty <span class="arw">→</span></a>
         </div>
       </article>
 

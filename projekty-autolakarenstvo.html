@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autolakárenstvo — Projekty — Technocolor</title>
+<meta name="description" content="Realizované projekty Technocolor v kategórii autolakárenstvo — opravy karosérií, prelakovanie a obnova laku podľa vzorkovníka RAL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TECHNOCOLOR — tokeny (odvodené z dodaných mockupov)
+   ============================================================ */
+:root{
+  --navy-900:#071a30;
+  --navy-800:#0b2540;
+  --navy-600:#123a63;
+  --blue:#1e6fd6;
+  --blue-light:#1e7fe0;
+  --bg:#f4f6f9;
+  --band:#eaeff7;
+  --paper:#fff;
+  --ink:#0b2540;
+  --muted:#56637a;
+  --muted-2:#8592a8;
+  --line:#e3e8f0;
+  --green:#35c17a;
+  --shadow-lg:0 30px 60px -20px rgba(11,37,64,.45), 0 10px 24px -8px rgba(11,37,64,.25);
+  --shadow-md:0 24px 50px -18px rgba(11,37,64,.40);
+  --shadow-sm:0 10px 30px -14px rgba(11,37,64,.26);
+  --r-lg:24px; --r-md:18px; --r-sm:12px;
+  --display:"Archivo","Segoe UI",system-ui,sans-serif;
+  --body:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;color:var(--ink);line-height:1.13}
+h2{font-size:clamp(28px,3.9vw,44px);font-weight:800}
+h3{font-size:clamp(20px,2.2vw,25px);font-weight:800;letter-spacing:-.015em}
+.grad{background:linear-gradient(90deg,#0b2540,#1e6fd6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-light);background:linear-gradient(90deg,#eaf3ff,#f4f9ff);padding:7px 14px;border-radius:999px;margin-bottom:18px}
+.lead{font-size:16px;line-height:1.72;color:var(--muted)}
+.pad{padding:96px 0}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:700;padding:14px 26px;border-radius:999px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s}
+.btn-primary{background:linear-gradient(135deg,#1e78dd,#1554a8);color:#fff;box-shadow:0 14px 28px -12px rgba(30,111,214,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 34px -12px rgba(30,111,214,.85)}
+.btn-outline{background:#fff;color:var(--navy-800);border-color:var(--line)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue-light);outline-offset:3px;border-radius:6px}
+
+/* ===================== NAV ===================== */
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .2s,background .2s,box-shadow .2s}
+.nav.stuck{border-color:var(--line);background:rgba(255,255,255,.92);box-shadow:0 8px 24px -18px rgba(11,37,64,.5)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:26px;height:72px;max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-img{height:28px;width:auto;display:block}
+.nav-links{display:flex;gap:26px;margin:0 auto}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--muted);text-decoration:none;position:relative;transition:color .15s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--blue);border-radius:2px;transition:right .22s}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a:hover::after{right:0}
+.nav-links a.nav-highlight{font-weight:800;color:var(--navy-800)}
+.nav-links a.nav-highlight:hover{color:var(--blue)}
+.nav-links-cta{display:none}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-cta .btn{padding:10px 22px;font-size:14px}
+.burger{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:var(--navy-800);border-radius:2px}
+.burger span+span{margin-top:4px}
+
+/* ===================== STRÁNKOVÝ BANNER ===================== */
+.page-banner{position:relative;background:linear-gradient(150deg,#123a63 0%,#0b2540 55%,#071a30 100%);color:#fff;padding:64px 0 60px;overflow:hidden}
+.page-banner::before{content:"";position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(56,138,221,.28),transparent 68%);top:-300px;right:-180px;pointer-events:none}
+.page-banner::after{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px),radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:7px 7px,11px 11px;background-position:0 0,4px 5px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 80%)}
+.page-banner .wrap{position:relative;z-index:2}
+.crumbs{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(226,236,248,.62);margin-bottom:20px;flex-wrap:wrap}
+.crumbs a{color:rgba(226,236,248,.62);text-decoration:none;transition:color .15s}
+.crumbs a:hover{color:#fff}
+.crumbs span[aria-current]{color:rgba(226,236,248,.92)}
+.page-banner h1{font-size:clamp(30px,4.4vw,46px);font-weight:800;color:#fff;letter-spacing:-.03em;margin-bottom:16px}
+.page-banner p{font-size:16.5px;line-height:1.75;color:rgba(226,236,248,.8);max-width:600px}
+.back-link{display:inline-flex;align-items:center;gap:7px;margin-top:26px;font-size:14.5px;font-weight:700;color:#9ec9ff;text-decoration:none;transition:gap .16s}
+.back-link:hover{gap:12px}
+
+/* ===================== ZOZNAM PROJEKTOV ===================== */
+.proj-list{display:grid;gap:34px}
+.proj-item{display:grid;grid-template-columns:30% 1fr;align-items:stretch;gap:30px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:28px;transition:box-shadow .2s}
+.proj-item:hover{box-shadow:0 26px 46px -22px rgba(11,37,64,.32)}
+.proj-content{min-width:0;display:flex;flex-direction:column;justify-content:center}
+.proj-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.proj-head h3{margin:0}
+.proj-date{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);white-space:nowrap}
+
+.proj-cover{position:relative;display:block;width:100%;height:100%;min-height:200px;border-radius:var(--r-md);overflow:hidden;border:0;padding:0;margin:0;cursor:zoom-in;background:linear-gradient(150deg,#1a4a7d 0%,#0b2540 60%,#071a30 100%);font:inherit}
+.proj-cover::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,138,221,.32),transparent 70%);top:-90px;left:-60px}
+.proj-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.proj-cover .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.34);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.proj-cover .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,37,0) 55%,rgba(6,21,37,.5) 100%);opacity:0;transition:opacity .2s}
+.proj-cover:hover .scrim,.proj-cover:focus-visible .scrim{opacity:1}
+.proj-zoom{position:absolute;z-index:2;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:9px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.22);opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.proj-cover:hover .proj-zoom,.proj-cover:focus-visible .proj-zoom{opacity:1;transform:none}
+.proj-zoom svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.proj-count{position:absolute;z-index:2;left:16px;top:16px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#eaf2ff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
+.proj-desc{margin-top:0;font-size:15.5px;line-height:1.75;color:var(--muted);max-width:760px}
+
+/* ===================== LIGHTBOX GALÉRIA ===================== */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:70px 60px}
+.lightbox.open{display:flex}
+.lightbox-backdrop{position:absolute;inset:0;background:rgba(6,15,28,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:0;padding:0;cursor:default}
+.lightbox-in{position:relative;z-index:2;max-width:980px;width:100%}
+.lightbox-frame{position:relative}
+.lightbox-stage{position:relative;aspect-ratio:16/10;border-radius:var(--r-md);overflow:hidden;background:linear-gradient(150deg,#1a4a7d 0%,#0b2540 60%,#071a30 100%);box-shadow:var(--shadow-lg)}
+.lightbox-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.lightbox-stage .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.4);font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:0 30px}
+.lightbox-close{position:absolute;top:-52px;right:0;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;display:grid;place-items:center;cursor:pointer}
+.lightbox-close:hover{background:rgba(255,255,255,.2)}
+.lightbox-close svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:3}
+.lightbox-nav:hover{background:rgba(255,255,255,.22)}
+.lightbox-prev{left:-23px}
+.lightbox-next{right:-23px}
+.lightbox-nav svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lightbox-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px;color:rgba(226,236,248,.85)}
+.lightbox-title{font-family:var(--body);font-size:15px;font-weight:600;color:#fff}
+.lightbox-counter{font-family:var(--mono);font-size:12.5px;letter-spacing:.07em;white-space:nowrap}
+
+/* ===================== FOOTER ===================== */
+footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 0;margin-top:0}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;padding-bottom:46px}
+.ft .logo{color:#fff;margin-bottom:14px}
+.ft .logo-img{height:34px}
+.ft .tagline{font-size:14px;line-height:1.7;max-width:300px}
+.ft h5{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#7fa8d8;margin-bottom:16px}
+.ft ul{list-style:none;display:grid;gap:9px}
+.ft a{font-size:14.5px;text-decoration:none;color:rgba(210,224,240,.78);transition:color .15s}
+.ft a:hover{color:#fff}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;font-size:13px}
+
+/* ===================== ANIMÁCIE ===================== */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+
+/* ===================== RESPONZÍVNE ===================== */
+@media (max-width:1000px){
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);margin:0}
+  .burger{display:block}
+  .nav-cta .btn-outline,.nav-cta .btn-primary{display:none}
+  .nav-links-cta{display:flex;gap:10px;margin-top:6px;padding-top:16px;border-top:1px solid var(--line)}
+  .nav-links-cta .btn{flex:1;justify-content:center}
+  .nav-links-cta .btn-primary{color:#fff}
+  .nav-links-cta .btn-outline{color:var(--navy-800)}
+  .page-banner{padding:48px 0 44px}
+  .pad{padding:64px 0}
+  .proj-item{grid-template-columns:1fr;padding:24px 20px 28px}
+  .proj-content{justify-content:flex-start}
+  .proj-cover{height:min(56vw,360px);min-height:200px}
+  .proj-desc{margin-top:20px}
+  .lightbox{padding:24px 20px}
+  .lightbox-prev{left:6px}
+  .lightbox-next{right:6px}
+  .lightbox-nav{width:40px;height:40px}
+  .lightbox-close{top:-46px;right:0}
+}
+@media (max-width:560px){
+  .ft-grid{grid-template-columns:1fr;gap:32px}
+  .proj-head{gap:6px}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="index.html#top"><img class="logo-img" src="Images/Logo.png" alt="Technocolor"></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#top">Domov</a>
+      <a href="index.html#tryskanie">Tryskanie</a>
+      <a href="index.html#lakovanie">Lakovanie</a>
+      <a href="index.html#znacenie">Značenie</a>
+      <a href="index.html#certifikaty">Certifikáty</a>
+      <a href="projekty.html" class="nav-highlight" aria-current="page">Projekty</a>
+      <div class="nav-links-cta">
+        <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
+        <a class="btn btn-primary" href="tel:+421949643289">Telefón</a>
+      </div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
+      <a class="btn btn-primary" href="tel:+421949643289">Telefón</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== BANNER ===================== -->
+<header class="page-banner">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="index.html#top">Domov</a><span>/</span>
+      <a href="projekty.html">Projekty</a><span>/</span>
+      <span aria-current="page">Autolakárenstvo</span>
+    </div>
+    <h1>Autolakárenstvo</h1>
+    <p>Opravy karosérií, prelakovanie dielov a obnova laku podľa vzorkovníka RAL — ukážka z realizovaných zákaziek pre autoservisy aj súkromných zákazníkov.</p>
+    <a class="back-link" href="projekty.html">← Späť na všetky kategórie</a>
+  </div>
+</header>
+
+<!-- ===================== PROJEKTY ===================== -->
+<section class="pad" id="projekty-list">
+  <div class="wrap">
+    <div class="proj-list rv">
+
+      <article class="proj-item">
+        <button class="proj-cover" type="button" data-gallery="auto-1" aria-haspopup="dialog" aria-label="Otvoriť galériu — Kompletné prelakovanie karosérie">
+          <div class="ph">Fotka projektu</div>
+          <span class="scrim"></span>
+          <span class="proj-count">4 fotky</span>
+          <span class="proj-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>Zobraziť galériu</span>
+        </button>
+        <div class="proj-content">
+          <div class="proj-head">
+            <h3>Kompletné prelakovanie karosérie — osobné vozidlo</h3>
+            <span class="proj-date">Realizácia · 2025</span>
+          </div>
+          <p class="proj-desc">Vozidlo prišlo s vyblednutým a miestami popraskaným pôvodným lakom. Karosériu sme kompletne obrúsili, opravili drobné nerovnosti a nastriekali novým dvojvrstvovým náterom v pôvodnom odtieni podľa vzorkovníka RAL vrátane finálneho leštenia.</p>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-cover" type="button" data-gallery="auto-2" aria-haspopup="dialog" aria-label="Otvoriť galériu — Oprava laku po nehode">
+          <div class="ph">Fotka projektu</div>
+          <span class="scrim"></span>
+          <span class="proj-count">3 fotky</span>
+          <span class="proj-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>Zobraziť galériu</span>
+        </button>
+        <div class="proj-content">
+          <div class="proj-head">
+            <h3>Oprava laku po nehode — predné krídlo a nárazník</h3>
+            <span class="proj-date">Realizácia · 2025</span>
+          </div>
+          <p class="proj-desc">Po menšej dopravnej nehode bolo potrebné vymeniť a prelakovať predné krídlo a nárazník. Farbu sme namiešali priamo na mieru podľa kódu vozidla, takže prechod medzi pôvodným a novým náterom je vizuálne nerozoznateľný.</p>
+        </div>
+      </article>
+
+      <article class="proj-item">
+        <button class="proj-cover" type="button" data-gallery="auto-3" aria-haspopup="dialog" aria-label="Otvoriť galériu — Renovácia laku dodávky">
+          <div class="ph">Fotka projektu</div>
+          <span class="scrim"></span>
+          <span class="proj-count">4 fotky</span>
+          <span class="proj-zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>Zobraziť galériu</span>
+        </button>
+        <div class="proj-content">
+          <div class="proj-head">
+            <h3>Renovácia laku dodávky pre firemný vozový park</h3>
+            <span class="proj-date">Realizácia · 2024</span>
+          </div>
+          <p class="proj-desc">Firemná dodávka so staršou, poškriabanou karosériou dostala kompletne nový náter vrátane loga a firemných farieb podľa dodaného grafického manuálu — od prípravy povrchu až po ochranný vrchný lak.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIGHTBOX GALÉRIA ===================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galéria projektu">
+  <button class="lightbox-backdrop" id="lightboxBackdrop" type="button" aria-label="Zavrieť galériu"></button>
+  <div class="lightbox-in">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Zavrieť galériu"><svg viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></svg></button>
+    <div class="lightbox-frame">
+      <div class="lightbox-stage" id="lightboxStage"></div>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Predchádzajúca fotka"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Nasledujúca fotka"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+    </div>
+    <div class="lightbox-foot">
+      <span class="lightbox-title" id="lightboxTitle"></span>
+      <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <a class="logo" href="index.html#top"><img class="logo-img" src="Images/Logo.png" alt="Technocolor"></a>
+        <p class="tagline">Povrchová úprava a lakovanie</p>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="mailto:technocolor@technocolor.sk">technocolor@technocolor.sk</a></li>
+          <li><a href="tel:+421949643289">+421 949 643 289</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Adresa</h5>
+        <ul>
+          <li><a href="https://maps.google.com/?q=Šelpice+140" target="_blank" rel="noopener">Šelpice 140, 919 09,<br>Slovensko</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">© <span id="yr">2026</span> Technocolor. Všetky práva vyhradené.</div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 12);
+onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+const burger = document.getElementById('burger');
+const links = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  const open = links.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+links.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  const menuWasOpen = links.classList.contains('open');
+  links.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  // Ak menu bolo otvorené (mobil), zavretie prekreslí stránku a prehliadač
+  // by mohol zrušiť skok na kotvu spustený tým istým klikom — doskrolujeme sami.
+  if (menuWasOpen && href.charAt(0) === '#' && href.length > 1) {
+    const target = document.getElementById(href.slice(1));
+    if (target) {
+      e.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      requestAnimationFrame(() => {
+        const y = target.getBoundingClientRect().top + window.scrollY - 86;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+        history.pushState(null, '', href);
+      });
+    }
+  }
+});
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+}
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ==================== GALÉRIE PROJEKTOV (lightbox) ====================
+   Pre každý projekt zoznam fotiek — teraz zástupné, firma si sem
+   neskôr doplní reálne obrázky (napr. "Images/auto-1-01.jpg"). */
+const galleries = {
+  'auto-1': {
+    title: 'Kompletné prelakovanie karosérie — osobné vozidlo',
+    slides: [
+      { ph: 'Pred — vyblednutý a popraskaný lak' },
+      { ph: 'Príprava povrchu a tmelenie' },
+      { ph: 'Nanášanie základovej vrstvy' },
+      { ph: 'Finálny náter a leštenie' },
+    ]
+  },
+  'auto-2': {
+    title: 'Oprava laku po nehode — predné krídlo a nárazník',
+    slides: [
+      { ph: 'Stav po nehode' },
+      { ph: 'Príprava dielov pred lakovaním' },
+      { ph: 'Výsledok po opravě a nastriekaní' },
+    ]
+  },
+  'auto-3': {
+    title: 'Renovácia laku dodávky pre firemný vozový park',
+    slides: [
+      { ph: 'Pôvodný stav karosérie' },
+      { ph: 'Brúsenie a príprava povrchu' },
+      { ph: 'Aplikácia firemných farieb' },
+      { ph: 'Hotové vozidlo' },
+    ]
+  }
+};
+
+const lightbox = document.getElementById('lightbox');
+const stage = document.getElementById('lightboxStage');
+const titleEl = document.getElementById('lightboxTitle');
+const counterEl = document.getElementById('lightboxCounter');
+let currentGallery = null;
+let currentIndex = 0;
+let lastFocused = null;
+
+function renderSlide(){
+  const g = galleries[currentGallery];
+  if (!g) return;
+  stage.querySelectorAll('.ph, img').forEach(el => el.remove());
+  const slide = g.slides[currentIndex];
+  const ph = document.createElement('div');
+  ph.className = 'ph';
+  ph.textContent = slide.ph || ('Fotka ' + (currentIndex + 1));
+  stage.insertBefore(ph, stage.firstChild);
+  titleEl.textContent = g.title;
+  counterEl.textContent = (currentIndex + 1) + ' / ' + g.slides.length;
+}
+
+function openGallery(id){
+  if (!galleries[id]) return;
+  currentGallery = id;
+  currentIndex = 0;
+  lastFocused = document.activeElement;
+  renderSlide();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('lightboxClose').focus();
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  currentGallery = null;
+  if (lastFocused) lastFocused.focus();
+}
+function step(delta){
+  const g = galleries[currentGallery];
+  if (!g) return;
+  currentIndex = (currentIndex + delta + g.slides.length) % g.slides.length;
+  renderSlide();
+}
+
+document.querySelectorAll('[data-gallery]').forEach(btn => {
+  btn.addEventListener('click', () => openGallery(btn.dataset.gallery));
+});
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxBackdrop').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => step(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => step(1));
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') step(-1);
+  if (e.key === 'ArrowRight') step(1);
+});
+</script>
+</body>
+</html>
