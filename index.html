@@ -72,8 +72,9 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .nav-links a.nav-highlight{font-weight:800;color:var(--navy-800)}
 .nav-links a.nav-highlight:hover{color:var(--blue)}
 .nav-links-cta{display:none}
-.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-cta{display:flex;gap:16px;align-items:center}
 .nav-cta .btn{padding:10px 22px;font-size:14px}
+.lang-switch{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);padding-left:16px;border-left:1px solid var(--line);user-select:none}
 .burger{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 11px;cursor:pointer}
 .burger span{display:block;width:18px;height:2px;background:var(--navy-800);border-radius:2px}
 .burger span+span{margin-top:4px}
@@ -105,6 +106,7 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .cb:hover{background:rgba(255,255,255,.09)}
 .cb .ico{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none}
 .cb .ico svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico-optical-fix{transform:translateY(2px)}
 .cb .ico+span{min-width:0;flex:1}
 .cb small{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:5px}
 .cb b{display:block;font-size:18px;font-weight:700;line-height:1.32;overflow-wrap:anywhere}
@@ -169,6 +171,47 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .pill{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--navy-800);background:#f4f8fd;border:1px solid #dde8f5;padding:8px 13px;border-radius:8px}
 .pill b{font-weight:700;color:var(--blue)}
 
+/* ---- tab — odovzdávacie protokoly ---- */
+.protocol-tab{margin-top:44px;display:flex;align-items:center;gap:26px;background:linear-gradient(120deg,#2a8cf0,#1558b0);border-radius:var(--r-md);padding:32px 38px;box-shadow:0 22px 44px -20px rgba(21,88,176,.5)}
+.protocol-tab .ico{width:68px;height:68px;border-radius:18px;background:rgba(255,255,255,.18);display:grid;place-items:center;flex:none}
+.protocol-tab .ico svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.protocol-tab-body{flex:1;min-width:0}
+.protocol-tab-body strong{display:block;font-family:var(--display);font-size:24px;font-weight:800;color:#fff;letter-spacing:-.015em;margin-bottom:8px}
+.protocol-tab-body p{font-size:16px;font-weight:500;line-height:1.65;color:rgba(226,236,248,.92);margin:0}
+
+/* ---- tabuľka stupňov čistoty ---- */
+.std-table-wrap{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.std-table-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.std-table-head h4{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin:0}
+.std-table-note{font-size:12.5px;color:var(--muted-2)}
+.std-table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-sm)}
+.std-table{width:100%;border-collapse:collapse;min-width:480px;font-size:14px}
+.std-table th,.std-table td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line)}
+.std-table thead th{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);background:#f4f8fd}
+.std-table tbody tr:last-child td{border-bottom:0}
+.std-table tbody tr:hover{background:#f8fafd}
+.std-table td:first-child{font-family:var(--mono);font-weight:700;color:var(--blue);white-space:nowrap}
+.std-table td,.std-table th:not(:first-child){color:var(--muted)}
+
+/* ---- lightbox — vizuálna tabuľka stupňov Sa ---- */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox-backdrop{position:absolute;inset:0;background:rgba(6,15,28,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:0;padding:0;cursor:default}
+.lightbox-in{position:relative;z-index:2;max-width:720px;width:100%}
+.lightbox-close{position:absolute;top:-50px;right:0;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;display:grid;place-items:center;cursor:pointer}
+.lightbox-close:hover{background:rgba(255,255,255,.2)}
+.lightbox-close svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round}
+.sa-visual{background:#fff;border-radius:var(--r-lg);padding:32px 32px 36px;box-shadow:var(--shadow-lg)}
+.sa-visual h4{font-size:19px;margin-bottom:8px}
+.sa-visual-note{font-size:13.5px;line-height:1.6;color:var(--muted);margin-bottom:22px;max-width:560px}
+.sa-swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sa-swatch{position:relative;aspect-ratio:3/4;border-radius:var(--r-sm);overflow:hidden;display:flex;align-items:flex-end;padding:10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.sa-swatch-label{font-family:var(--mono);font-size:12px;font-weight:700;color:#fff;background:rgba(0,0,0,.3);padding:4px 8px;border-radius:999px}
+.sa-1{background-image:radial-gradient(rgba(0,0,0,.22) 1.5px,transparent 1.5px),radial-gradient(circle at 30% 20%,#a16f3e,#6b4423 60%,#43290f);background-size:7px 7px,auto}
+.sa-2{background-image:radial-gradient(rgba(0,0,0,.16) 1.5px,transparent 1.5px),radial-gradient(circle at 30% 20%,#ae9372,#7c6248 60%,#584632);background-size:7px 7px,auto}
+.sa-25{background-image:radial-gradient(rgba(0,0,0,.1) 1.5px,transparent 1.5px),radial-gradient(circle at 30% 20%,#bcc2c8,#949ba3 60%,#767e87);background-size:7px 7px,auto}
+.sa-3{background:linear-gradient(155deg,#e9edf1,#c7cfd6 55%,#aeb7bf)}
+
 /* ===================== ODSTRÁNENÉ: REFERENCIE ===================== */
 
 /* ===================== PROJEKTY ===================== */
@@ -188,6 +231,8 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .cert .seal span{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue);line-height:1.25;text-align:center}
 .cert h3{font-size:18px;color:var(--blue);margin-bottom:12px}
 .cert p{font-size:14px;line-height:1.7;color:var(--muted)}
+.cert-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:14px;font-weight:700;color:var(--blue);text-decoration:none;transition:gap .16s}
+.cert-link:hover{gap:11px}
 
 /* ===================== KONTAKT ===================== */
 .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
@@ -199,7 +244,12 @@ h3{font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.015em}
 .c-line:hover .ico{background:#d8e9ff}
 .c-line .ico svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .c-line small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted-2);margin-bottom:2px}
-.c-line b{font-size:15.5px;font-weight:600;color:var(--ink)}
+.c-line b{font-size:15.5px;font-weight:600;color:var(--ink);transition:color .15s}
+.c-line:hover b{color:var(--blue);text-decoration:underline}
+.c-nums{display:block}
+.c-nums a{display:block;color:var(--ink);text-decoration:none;font-size:15.5px;font-weight:600;transition:color .15s}
+.c-nums a:hover{color:var(--blue);text-decoration:underline}
+.c-nums a+a{margin-top:7px}
 .map{height:430px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--line);background:#dfe6ef}
 .map iframe{width:100%;height:100%;border:0;display:block}
 
@@ -230,11 +280,10 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
   .nav-links{display:none}
   .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);margin:0}
   .burger{display:block}
-  .nav-cta .btn-outline,.nav-cta .btn-primary{display:none}
+  .nav-cta .btn-primary{display:none}
   .nav-links-cta{display:flex;gap:10px;margin-top:6px;padding-top:16px;border-top:1px solid var(--line)}
   .nav-links-cta .btn{flex:1;justify-content:center}
   .nav-links-cta .btn-primary{color:#fff}
-  .nav-links-cta .btn-outline{color:var(--navy-800)}
   .hero{padding:88px 0 130px;min-height:0}
   .contact-bar-in{grid-template-columns:1fr}
   .cb+.cb{border-left:none;border-top:1px solid rgba(255,255,255,.18)}
@@ -248,6 +297,10 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
   .visual{height:250px}
   .expand-in{padding:26px 22px 28px}
   .detail-grid{gap:22px}
+  .protocol-tab{flex-direction:column;align-items:flex-start;text-align:left;padding:22px 20px}
+  .lightbox{padding:20px}
+  .lightbox-close{top:-44px}
+  .sa-visual{padding:24px 20px 28px}
   .contact{grid-template-columns:1fr;gap:36px}
   #kontakt .wrap{padding-left:14px;padding-right:32px}
   .map{height:340px}
@@ -265,6 +318,7 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
   .cb .ico svg{width:17px;height:17px}
   .cb b{font-size:16px}
   .ft-grid{grid-template-columns:1fr;gap:32px}
+  .sa-swatches{grid-template-columns:repeat(2,1fr);gap:10px}
 }
 </style>
 </head>
@@ -282,13 +336,12 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <a href="#certifikaty">Certifikáty</a>
       <a href="projekty.html" class="nav-highlight">Projekty</a>
       <div class="nav-links-cta">
-        <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
-        <a class="btn btn-primary" href="tel:+421949643289">Telefón</a>
+        <a class="btn btn-primary" href="#kontakt">Kontakt</a>
       </div>
     </div>
     <div class="nav-cta">
-      <a class="btn btn-outline" href="mailto:technocolor@technocolor.sk">Email</a>
-      <a class="btn btn-primary" href="tel:+421949643289">Telefón</a>
+      <a class="btn btn-primary" href="#kontakt">Kontakt</a>
+      <span class="lang-switch">EN</span>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -313,13 +366,13 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
         <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
         <span><small>Adresa</small><b>Šelpice 140,<br>919 09 Slovensko</b></span>
       </a>
-      <a class="cb" href="tel:+421949643289">
-        <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4z"/></svg></span>
-        <span><small>Zavolajte nám</small><b>+421 949 643 289</b></span>
+      <a class="cb" href="tel:+421940877820">
+        <span class="ico"><svg class="ico-optical-fix" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4z"/></svg></span>
+        <span><small>Zavolajte nám</small><b>+421 940 877 820</b></span>
       </a>
-      <a class="cb" href="mailto:technocolor@technocolor.sk">
+      <a class="cb" href="mailto:info@technocolor.sk">
         <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-        <span><small>Napíšte nám</small><b>technocolor@technocolor.sk</b></span>
+        <span><small>Dopyt a cenová kalkulácia</small><b>info@technocolor.sk</b></span>
       </a>
     </div>
   </div>
@@ -405,6 +458,26 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
               <p>Príprava pod náter, renovácia oceľových konštrukcií, čistenie strojných dielcov, podvozky a rámy vozidiel, obnova zábradlí, brán a plotov.</p>
             </div>
           </div>
+          <div class="std-table-wrap">
+            <div class="std-table-head">
+              <h4>Stupne čistoty povrchu</h4>
+              <span class="std-table-note">Podľa normy ISO 8501-1 — voľba stupňa podľa náročnosti náteru</span>
+            </div>
+            <div class="std-table-scroll">
+              <table class="std-table">
+                <thead><tr><th>Stupeň</th><th>Spôsob prípravy</th><th>Vzhľad povrchu</th></tr></thead>
+                <tbody>
+                  <tr><td>Sa 1</td><td>Tryskanie — ľahké</td><td>Odstránené voľné okuje, hrdza a cudzie častice</td></tr>
+                  <tr><td>Sa 2</td><td>Tryskanie — dôkladné</td><td>Takmer bez okují a hrdze, zvyšné stopy pevne priľnuté</td></tr>
+                  <tr><td>Sa 2½</td><td>Tryskanie — veľmi dôkladné</td><td>Viditeľné už len jemné škvrny a pruhy</td></tr>
+                  <tr><td>Sa 3</td><td>Tryskanie na vizuálne čistý kov</td><td>Jednotný kovový vzhľad, bez viditeľných zvyškov</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="link" type="button" id="openSaVisual">
+              <span class="txt">Zobraziť vizuálnu reprezentáciu stupňov Sa</span> <span class="arw">→</span>
+            </button>
+          </div>
           <div class="expand-foot">
             <span class="pill">Stupeň čistoty <b>Sa 2 – Sa 3</b></span>
             <span class="pill">Suché tryskanie</span>
@@ -462,6 +535,24 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
             <div class="detail">
               <h4>Odtiene a povrch</h4>
               <p>Odtiene miešame podľa vzorkovníka RAL. K dispozícii je lesklý, pololesklý aj matný povrch, vrátane štruktúrovaných variantov na zakrytie drobných nerovností.</p>
+            </div>
+          </div>
+          <div class="std-table-wrap">
+            <div class="std-table-head">
+              <h4>Požadovaná čistota povrchu pred náterom</h4>
+              <span class="std-table-note">Podľa normy ISO 8501-1 — minimálny stupeň prípravy pre jednotlivé náterové systémy</span>
+            </div>
+            <div class="std-table-scroll">
+              <table class="std-table">
+                <thead><tr><th>Stupeň</th><th>Spôsob prípravy</th><th>Vzhľad povrchu</th></tr></thead>
+                <tbody>
+                  <tr><td>St 2</td><td>Ručné a mechanické čistenie</td><td>Odstránené voľné okuje, hrdza a nečistoty</td></tr>
+                  <tr><td>St 3</td><td>Ručné a mechanické čistenie — dôkladné</td><td>Ako St 2, navyše povrch s kovovým leskom</td></tr>
+                  <tr><td>Sa 2</td><td>Tryskanie — dôkladné</td><td>Takmer bez okují a hrdze, zvyšné stopy pevne priľnuté</td></tr>
+                  <tr><td>Sa 2½</td><td>Tryskanie — veľmi dôkladné</td><td>Viditeľné už len jemné škvrny a pruhy — štandard pre väčšinu priemyselných náterov</td></tr>
+                  <tr><td>Sa 3</td><td>Tryskanie na vizuálne čistý kov</td><td>Jednotný kovový vzhľad — pre najnáročnejšie náterové systémy</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="expand-foot">
@@ -534,6 +625,14 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
         </div>
       </div>
     </div>
+
+    <div class="protocol-tab rv">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1z"/><path d="m9 13 2.3 2.3L16 10.5"/></svg></span>
+      <div class="protocol-tab-body">
+        <strong>Odborné odovzdávacie protokoly</strong>
+        <p>Na požiadanie k zákazke vyhotovíme aj písomný odovzdávací protokol s rozsahom vykonaných prác a kontrolou kvality — pre jasný a dohľadateľný záznam o realizácii.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -541,16 +640,16 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
 <section class="pad projects" id="projekty">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Pozrite si výber z <span class="grad">našich projektov</span></h2>
-      <p class="lead">Za roky pôsobenia sme pracovali na širokej škále projektov naprieč rôznymi odvetviami a typmi materiálov, od menších zákaziek až po rozsiahlejšie priemyselné riešenia.</p>
+      <h2>Pozrite si výber z <span class="grad">kategórií projektov</span></h2>
+      <p class="lead">Realizácie triedime podľa oblasti — od autolakárenstva cez stavby a priemysel až po dopravné značenie. Vyberte si kategóriu a pozrite si ukážky z realizovaných zákaziek.</p>
     </div>
     <div class="proj-grid rv">
-      <div class="proj">Fotka projektu</div>
-      <div class="proj">Fotka projektu</div>
-      <div class="proj">Fotka projektu</div>
-      <div class="proj">Fotka projektu</div>
+      <div class="proj">Autolakárenstvo</div>
+      <div class="proj">Stavby a konštrukcie</div>
+      <div class="proj">Priemysel</div>
+      <div class="proj">Dopravné značenie</div>
     </div>
-    <div class="center rv"><a class="btn btn-primary" href="projekty.html">Prezrieť projekty →</a></div>
+    <div class="center rv"><a class="btn btn-primary" href="projekty.html">Zobraziť všetky kategórie →</a></div>
   </div>
 </section>
 
@@ -566,16 +665,19 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
         <div class="seal"><span>ISO<br>9001<br>2015</span></div>
         <h3>Hodnotenie AA</h3>
         <p>Najvyššia dôveryhodnosť podľa Bisnode — patríme medzi 5,4 % takto hodnotených firiem na Slovensku.</p>
+        <a class="cert-link" href="#">Zobraziť certifikát (PDF) <span class="arw">→</span></a>
       </div>
       <div class="cert">
         <div class="seal"><span>ISO<br>9001<br>2015</span></div>
         <h3>Hodnotenie AA</h3>
         <p>Najvyššia dôveryhodnosť podľa Bisnode — patríme medzi 5,4 % takto hodnotených firiem na Slovensku.</p>
+        <a class="cert-link" href="#">Zobraziť certifikát (PDF) <span class="arw">→</span></a>
       </div>
       <div class="cert">
         <div class="seal"><span>ISO<br>9001<br>2015</span></div>
         <h3>Hodnotenie AA</h3>
         <p>Najvyššia dôveryhodnosť podľa Bisnode — patríme medzi 5,4 % takto hodnotených firiem na Slovensku.</p>
+        <a class="cert-link" href="#">Zobraziť certifikát (PDF) <span class="arw">→</span></a>
       </div>
     </div>
   </div>
@@ -589,14 +691,24 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
       <h2>Ozvite sa nám</h2>
       <p class="lead">Máte dotaz alebo by ste mali záujem s nami spolupracovať? Neváhajte nás kontaktovať.</p>
       <div class="c-lines">
+        <a class="c-line" href="mailto:info@technocolor.sk">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span><small>Dopyt a cenové ponuky</small><b>info@technocolor.sk</b></span>
+        </a>
         <a class="c-line" href="mailto:technocolor@technocolor.sk">
           <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-          <span><small>E-mail</small><b>technocolor@technocolor.sk</b></span>
+          <span><small>Fakturácia, termíny a ostatná komunikácia</small><b>technocolor@technocolor.sk</b></span>
         </a>
-        <a class="c-line" href="tel:+421949643289">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4z"/></svg></span>
-          <span><small>Telefón</small><b>+421 949 643 289</b></span>
-        </a>
+        <div class="c-line">
+          <span class="ico"><svg class="ico-optical-fix" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4z"/></svg></span>
+          <span>
+            <small>Telefón</small>
+            <span class="c-nums">
+              <a href="tel:+421940877820">+421 940 877 820</a>
+              <a href="tel:+421949643289">+421 949 643 289</a>
+            </span>
+          </span>
+        </div>
         <a class="c-line" href="https://maps.google.com/?q=Šelpice+140" target="_blank" rel="noopener">
           <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
           <span><small>Adresa</small><b>Šelpice 140, 919 09, Slovensko</b></span>
@@ -609,6 +721,24 @@ footer.ft{background:var(--navy-900);color:rgba(210,224,240,.72);padding:62px 0 
     </div>
   </div>
 </section>
+
+<!-- ===================== LIGHTBOX — VIZUÁLNA TABUĽKA STUPŇOV SA ===================== -->
+<div class="lightbox" id="saLightbox" role="dialog" aria-modal="true" aria-label="Vizuálna tabuľka stupňov Sa">
+  <button class="lightbox-backdrop" id="saLightboxBackdrop" type="button" aria-label="Zavrieť"></button>
+  <div class="lightbox-in">
+    <button class="lightbox-close" id="saLightboxClose" type="button" aria-label="Zavrieť"><svg viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></svg></button>
+    <div class="sa-visual">
+      <h4>Vizuálna porovnávacia tabuľka stupňov Sa</h4>
+      <p class="sa-visual-note">Orientačné znázornenie rozdielu v čistote povrchu medzi stupňami tryskania — skutočný výsledok sa líši podľa materiálu a pôvodného stavu dielca.</p>
+      <div class="sa-swatches">
+        <div class="sa-swatch sa-1"><span class="sa-swatch-label">Sa 1</span></div>
+        <div class="sa-swatch sa-2"><span class="sa-swatch-label">Sa 2</span></div>
+        <div class="sa-swatch sa-25"><span class="sa-swatch-label">Sa 2½</span></div>
+        <div class="sa-swatch sa-3"><span class="sa-swatch-label">Sa 3</span></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ===================== FOOTER ===================== -->
 <footer class="ft">
@@ -722,6 +852,31 @@ window.addEventListener('resize', () => {
 });
 
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---- lightbox — vizuálna tabuľka stupňov Sa ---- */
+const saLightbox = document.getElementById('saLightbox');
+const saOpenBtn = document.getElementById('openSaVisual');
+const saCloseBtn = document.getElementById('saLightboxClose');
+const saBackdrop = document.getElementById('saLightboxBackdrop');
+
+function openSaLightbox(){
+  saLightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  saCloseBtn.focus();
+}
+function closeSaLightbox(){
+  saLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  saOpenBtn.focus();
+}
+if (saOpenBtn) {
+  saOpenBtn.addEventListener('click', openSaLightbox);
+  saCloseBtn.addEventListener('click', closeSaLightbox);
+  saBackdrop.addEventListener('click', closeSaLightbox);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && saLightbox.classList.contains('open')) closeSaLightbox();
+  });
+}
 </script>
 </body>
 </html>
